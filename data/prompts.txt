@@ -1,0 +1,20 @@
+Could you please summarize the quarterly financial report for me?
+Write a Python function that checks if a string is a palindrome.
+What are the main causes of the French Revolution?
+Explain how photosynthesis works to a ten year old.
+Draft a polite email asking my manager for a day off next Friday.
+Compare the health benefits of intermittent fasting versus calorie restriction.
+Help me debug this SQL query that keeps returning duplicate rows.
+Suggest a three day itinerary for visiting Kyoto in the autumn.
+What is the difference between TCP and UDP in networking?
+Give me five ideas for a birthday gift for someone who loves hiking.
+Translate the following sentence into formal Spanish.
+Summarize the plot of Pride and Prejudice in two paragraphs.
+How do I convert a pandas dataframe column from string to datetime?
+What are the pros and cons of remote work for software teams?
+Write a haiku about the changing seasons in autumn.
+Explain the difference between machine learning and deep learning.
+Recommend a beginner friendly recipe for homemade sourdough bread.
+What steps should I take to renew my passport before it expires?
+Describe the water cycle and its main stages.
+Help me write a cover letter for a marketing internship.
