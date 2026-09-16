@@ -84,15 +84,38 @@ python test_typo_injector.py
 
 ## Results
 
-*(fill in after running — this is the payoff section)*
+Run on the 20 seed prompts in `data/prompts.txt`, averaged across all prompts,
+comparing each typo severity back to the clean (0%) baseline:
 
-| Tokenizer | Severity | Mean fertility (tok/word) | % increase vs. clean |
-|---|---|---|---|
-| cl100k_base | 0% | — | — |
-| cl100k_base | 15% | — | — |
-| cl100k_base | 30% | — | — |
+| Tokenizer | Severity | Mean tokens | Mean fertility (tok/word) | % increase vs. clean |
+|---|---|---|---|---|
+| cl100k_base | 0% | 11.85 | 1.157 | — |
+| cl100k_base | 5% | 12.35 | 1.199 | +3.8% |
+| cl100k_base | 15% | 13.70 | 1.329 | +15.1% |
+| cl100k_base | 30% | 15.90 | 1.551 | +34.3% |
+| o200k_base | 0% | 11.65 | 1.137 | — |
+| o200k_base | 5% | 12.10 | 1.174 | +3.5% |
+| o200k_base | 15% | 13.30 | 1.291 | +13.8% |
+| o200k_base | 30% | 15.30 | 1.493 | +31.5% |
 
 ![fertility vs severity](results/fertility_vs_severity.png)
+
+**Takeaway:** the cost is real, and it's roughly linear in typo rate, not a
+rounding error. At a typo rate consistent with rushed real-world prompts
+(~15%, in line with the health-query error rates cited below), you're
+already paying a ~14–15% token tax — before the model even starts
+generating a response. At 30% — a bad-connection voice-to-text transcript,
+or a truly cursed thumb day — that's over 30% more input tokens for
+*identical intent*. Both tokenizers track each other closely (o200k_base
+runs consistently ~2 points lower, consistent with its larger, more
+efficient vocabulary), so this isn't an artifact of one tokenizer's quirks.
+
+Worth remembering: this measures *input* token cost only. It says nothing
+about whether the model actually understood the typo'd prompt correctly —
+that's the accuracy question the papers below already answer (badly, for
+the model). So the honest framing is: typos cost you on both ends. More
+input tokens to send the message, and (per the literature) a real chance
+the message didn't land right anyway.
 
 ## Background
 

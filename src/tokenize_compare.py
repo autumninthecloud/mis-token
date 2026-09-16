@@ -12,6 +12,7 @@ Run:
 import argparse
 import csv
 from pathlib import Path
+from typing import List
 
 from typo_injector import batch_inject
 
@@ -19,7 +20,7 @@ SEVERITIES = [0.0, 0.05, 0.15, 0.30]
 SEED = 42
 
 
-def load_tokenizers(names: list[str]):
+def load_tokenizers(names: List[str]):
     """Lazily load only the tokenizers the user asked for, so the script
     still runs if e.g. transformers isn't installed and you only want
     tiktoken results."""

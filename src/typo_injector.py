@@ -15,6 +15,7 @@ Usage:
 
 import random
 import string
+from typing import List, Optional
 
 # QWERTY physical neighbors, lowercase only. Used for substitution and
 # insertion so injected errors look like real fat-finger mistakes.
@@ -79,7 +80,7 @@ def _mutate_word(word: str, rng: random.Random) -> str:
     return word[:idx] + word[idx + 1:]
 
 
-def inject_typos(text: str, severity: float, seed: int | None = None) -> str:
+def inject_typos(text: str, severity: float, seed: Optional[int] = None) -> str:
     """
     Return a copy of `text` with typos injected into approximately
     `severity` fraction of its words.
@@ -107,7 +108,7 @@ def inject_typos(text: str, severity: float, seed: int | None = None) -> str:
     return " ".join(words)
 
 
-def batch_inject(prompts: list[str], severity: float, seed: int | None = None):
+def batch_inject(prompts: List[str], severity: float, seed: Optional[int] = None):
     """Apply inject_typos to a list of prompts. Uses a distinct sub-seed per
     prompt (derived from seed + index) so runs are reproducible but prompts
     don't all get identical corruption patterns."""
